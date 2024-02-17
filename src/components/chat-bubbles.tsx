@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Configuration } from "../shared/configuration";
-import { ChatTyping } from "./chat-typing";
+import { Constants } from "../shared/utils/constants";
 import { ChatHistory } from "./chat-history";
+import { ChatTyping } from "./chat-typing";
 
 const blockedKeys: string[] = [
   "Dead",
@@ -14,7 +15,7 @@ const blockedKeys: string[] = [
   "ArrowLeft",
   "ArrowRight",
   "ArrowDown",
-  "Tab"
+  "Tab",
 ];
 
 export function ChatBubbles({
@@ -22,8 +23,12 @@ export function ChatBubbles({
 }: {
   configuration: Configuration;
 }) {
-  const [content, setContent] = useState<string>("");
-  const [history, setHistory] = useState<string[]>([]);
+  const [content, setContent] = useState<string>(
+    Constants.INITIAL_STATE_EMPTY_STRING
+  );
+  const [history, setHistory] = useState<string[]>(
+    Constants.INITIAL_STATE_EMPTY_ARRAY
+  );
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -36,23 +41,26 @@ export function ChatBubbles({
   function handleKeyDown(event: KeyboardEvent) {
     const key = event.key;
     switch (key) {
-      case "Backspace": {
-        const deletedCharContent = content.substring(0, content.length - 1);
-        setContent(deletedCharContent);
+      case Constants.BACKSPACE_KEY: {
+        setContent(content.substring(0, content.length - 1));
         break;
       }
-      case "Enter": {
-        const addedHistory = [...history, content];
-        setHistory(addedHistory);
-        setContent("")
+      case Constants.ENTER_KEY: {
+        setHistory([...history, content]);
+        setContent(Constants.INITIAL_STATE_EMPTY_STRING);
         break;
       }
       default: {
         if (blockedKeys.includes(key)) break;
-        const handleContent = content + key;
-        setContent(handleContent);
+        if (!event.ctrlKey) setContent(content + key);
+        if (event.ctrlKey && key === Constants.D_KEY) resetChatStates();
       }
     }
+  }
+
+  function resetChatStates() {
+    setContent(Constants.INITIAL_STATE_EMPTY_STRING);
+    setHistory(Constants.INITIAL_STATE_EMPTY_ARRAY);
   }
 
   return (

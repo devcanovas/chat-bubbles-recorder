@@ -5,9 +5,11 @@ import { Constants } from "./shared/utils/constants";
 import { ChatBubbles } from "./components/chat-bubbles";
 
 export function App() {
-  const [username, setUsername] = useState<string>("");
-  const [imageUrl, setImageUrl] = useState<string>("");
-  const [configuration, setConfiguration] = useState<Configuration>(new Configuration());
+  const [username, setUsername] = useState<string>(Constants.INITIAL_STATE_EMPTY_STRING);
+  const [imageUrl, setImageUrl] = useState<string>(Constants.INITIAL_STATE_EMPTY_STRING);
+  const [configuration, setConfiguration] = useState<Configuration>(
+    new Configuration()
+  );
 
   function handleOnSubmit(event: FormEvent) {
     event.preventDefault();
@@ -55,7 +57,9 @@ export function App() {
             </form>
           </section>
         )}
-        {configuration.isSetted && <ChatBubbles configuration={configuration} />}
+        {configuration.isSetted && (
+          <ChatBubbles configuration={configuration} />
+        )}
       </main>
       <Toaster />
     </>
