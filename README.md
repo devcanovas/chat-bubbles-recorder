@@ -1,7 +1,10 @@
-# Tauri + React + Typescript
+![logo](https://i.imgur.com/0uNnqlQ.png)
+# Chat Bubbles Recorder
+🗨️ A app that launches chat bubbles according to your types in you keyboard to use on your OBS or streaming app.
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+## Installation
+Open the url to download the installer.
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Shortcuts
+Ctrl + R -> Reloads the configuration app to default.
+Ctrl + D -> Erase the content and history that you've typed untl moment.
