@@ -7,4 +7,5 @@ Open the url to download the installer.
 
 ## Shortcuts
 Ctrl + R -> Reloads the configuration app to default.
+
 Ctrl + D -> Erase the content and history that you've typed untl moment.
