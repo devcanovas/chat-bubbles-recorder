@@ -21,8 +21,8 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "chat-bubbles-recorder",
-        "width": 800,
+        "title": "Chat Bubbles Recorder",
+        "width": 1000,
         "height": 600
       }
     ],
